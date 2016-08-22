@@ -5,6 +5,8 @@
  */
 package newpackage;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Jesus
@@ -28,10 +30,71 @@ public class interfaz14 extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        txtDias = new javax.swing.JTextField();
+        txtValor = new javax.swing.JTextField();
+        cmdBOrrar = new javax.swing.JButton();
+        cmdCalcular = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtDias.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 11)); // NOI18N
+        txtDias.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDiasKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txtDias, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 70, -1));
+
+        txtValor.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 16)); // NOI18N
+        txtValor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtValorKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txtValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, 130, -1));
+
+        cmdBOrrar.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 11)); // NOI18N
+        cmdBOrrar.setForeground(new java.awt.Color(153, 0, 0));
+        cmdBOrrar.setText("Borrar");
+        cmdBOrrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdBOrrarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cmdBOrrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 270, -1, -1));
+
+        cmdCalcular.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 11)); // NOI18N
+        cmdCalcular.setForeground(new java.awt.Color(0, 153, 0));
+        cmdCalcular.setText("Calcular");
+        cmdCalcular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdCalcularActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cmdCalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 80, 30));
+
+        jLabel1.setFont(new java.awt.Font("Rage Italic", 0, 48)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel1.setText("Saravia");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 210, 50));
+
+        jLabel7.setFont(new java.awt.Font("Swis721 LtEx BT", 0, 18)); // NOI18N
+        jLabel7.setText("Hotel");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 140, 20));
+
+        jLabel3.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 11)); // NOI18N
+        jLabel3.setText("Numero de dias");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 16)); // NOI18N
+        jLabel4.setText("Valor");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -46,6 +109,52 @@ public class interfaz14 extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtDiasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDiasKeyTyped
+        char c=evt.getKeyChar();
+
+        if(!Character.isDigit(evt.getKeyChar())){
+            getToolkit().beep();
+
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtDiasKeyTyped
+
+    private void txtValorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtValorKeyTyped
+        char c=evt.getKeyChar();
+
+        getToolkit().beep();
+
+        evt.consume();
+    }//GEN-LAST:event_txtValorKeyTyped
+
+    private void cmdBOrrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdBOrrarActionPerformed
+        txtValor.setText("");
+        txtDias.setText("");
+        
+
+        txtDias.requestFocusInWindow();
+    }//GEN-LAST:event_cmdBOrrarActionPerformed
+
+    private void cmdCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCalcularActionPerformed
+        String res1;
+        long op1, op2,dias;
+        if (txtDias.getText().trim().isEmpty() ){
+            JOptionPane.showMessageDialog(this,"Por favor digiete La cantida de peliculas","Error",JOptionPane.ERROR_MESSAGE);
+            txtDias.requestFocusInWindow();
+        
+        } else{
+           dias= Long.parseLong(txtDias.getText());  
+                 op1=dias*200000;
+                    op2=op1-100000;
+                    res1=String.valueOf(op2);
+                 
+                 txtValor.setText(res1);
+            }
+
+        
+
+    }//GEN-LAST:event_cmdCalcularActionPerformed
 
     /**
      * @param args the command line arguments
@@ -83,6 +192,14 @@ public class interfaz14 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cmdBOrrar;
+    private javax.swing.JButton cmdCalcular;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField txtDias;
+    private javax.swing.JTextField txtValor;
     // End of variables declaration//GEN-END:variables
 }
